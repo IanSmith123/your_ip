@@ -84,7 +84,8 @@ DATABASES = {
         "NAME": "ctf",
         "USER": "iie",
         "PASSWORD": "iieiieiie",
-        "HOST": "cd.les1ie.com",
+        "HOST": "psql",
+        # "HOST": "cd.les1ie.com",
         "PORT": 5432
     }
 }
