@@ -2,6 +2,7 @@ FROM python:3.6
 
 LABEL maintainer="Les1ie <me@les1ie.com>"
 
+ADD docker-entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR /app
 COPY requirements.txt .

@@ -3,7 +3,7 @@ from django.shortcuts import render
 import json
 # Create your views here.
 from django.http import HttpResponse, JsonResponse
-from   django.shortcuts import render
+from django.shortcuts import render
 
 from .models import MyIP
 
@@ -12,6 +12,8 @@ def save_ip(request):
     # _ip = MyIP()
     _ip = request.GET.get("ip")
     _domain = request.GET.get("domain")
+    if _ip is None or _domain is None:
+        return render(request, 'save.html')
 
     my_ip = MyIP()
     sample = {"ip": _ip, "domain": _domain}
@@ -28,19 +30,17 @@ def save_ip(request):
 
 def query_ip(request):
     dic = request.GET
-    print("query: ", dic)
-    # my_ip = MyIP.objects.filter(ip__ip=dic.get('ip'))
-    # dic = {"ip__i'or'p": '1'}
-    # my_ip = MyIP.objects.filter(**dic).all()
-    # my_ip = MyIP.objects.filter(ip__domain=dic.get('domain')).all()
-    my_ip = MyIP.objects.filter(ip__ip=dic.get('ip')).all()
-    # my_ip = list(my_ip)
-    print(my_ip)
-    for i in my_ip:
-        print(i)
+    dic = dict(dic)
+    if len(dic) == 0:
+        return render(request, 'query.html')
+
+    # good idea for all kind of query
+    dic = {f"ip__{k}": dic[k][0] for k in dic}
+    my_ip = MyIP.objects.filter(**dic).all().values()
+    my_ip = [item for item in my_ip]
 
     return JsonResponse(my_ip, safe=False)
 
 
 def index(request):
-    return render(request, 'index.html',)
+    return render(request, 'index.html', )
