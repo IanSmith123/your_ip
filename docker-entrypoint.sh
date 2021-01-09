@@ -4,7 +4,7 @@ set -ex
 cd /app
 
 chmod +x wait-for-it.sh
-wait-for-it.sh -t 0 psql:5432 -- echo "postgres is up"
+./wait-for-it.sh -t 0 psql:5432 -- echo "postgres is up"
 
 python manage.py makemigrations
 python manage.py migrate

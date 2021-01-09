@@ -2,7 +2,6 @@ FROM python:3.6
 
 LABEL maintainer="Les1ie <me@les1ie.com>"
 
-ADD docker-entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR /app
 COPY requirements.txt .
@@ -15,5 +14,6 @@ RUN chmod +x ./wait-for-it.sh
 #RUN chmod +x /docker-entrypoint.sh
 
 #WORKDIR /usr/src
+ADD docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh"]
 CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
