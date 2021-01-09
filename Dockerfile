@@ -2,7 +2,11 @@ FROM python:3.5
 
 LABEL maintainer="Les1ie <me@les1ie.com>"
 
-ADD requ
+
+WORKDIR /app
+COPY requirements.txt .
+RUN python -m pip install -r requirements.txt -i https://pypi.douban.com/simple
+
 COPY src/ /usr/src/
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
