@@ -1,0 +1,20 @@
+version: "3"
+services:
+  your_ip:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8899:8000"
+    depends_on:
+      - db
+  psql:
+    image: postgres:9.6-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=iie
+      - POSTGRES_PASSWORD=iieiieiie
+      - POSTGRES_DB=ctf
+
+
