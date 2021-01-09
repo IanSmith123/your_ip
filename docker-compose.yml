@@ -11,6 +11,8 @@ services:
       - "8899:8000"
     depends_on:
       - psql
+    command: [ "./wait-for-it.sh", "psql:5432", "--", "python3", "manage.py", "runserver", "0.0.0.0:8000" ]
+
   psql:
     image: postgres:9.6-alpine
     ports:
