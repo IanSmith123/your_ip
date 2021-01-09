@@ -36,6 +36,7 @@ def query_ip(request):
 
     # good idea for all kind of query
     dic = {f"ip__{k}": dic[k][0] for k in dic}
+    print(dic)
     my_ip = MyIP.objects.filter(**dic).all().values()
     my_ip = [item for item in my_ip]
 
