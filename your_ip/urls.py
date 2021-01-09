@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ip.views import save_ip, query_ip
+from ip.views import save_ip, query_ip, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('save/', save_ip),  # name="get your ip ")
-    path('query/', query_ip)  # name="get your ip ")
+    path('query/', query_ip) , # name="get your ip ")
+    path('', index)
+
 ]
