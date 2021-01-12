@@ -1,9 +1,11 @@
+# author: Les1ie
+# mail: me@les1ie.com
+
 from django.shortcuts import render
 
 import json
 # Create your views here.
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
 
 from .models import MyIP
 
@@ -34,6 +36,10 @@ def query_ip(request):
     if len(dic) == 0:
         return render(request, 'query.html')
 
+    if not check_danger_string(json.dumps(dic)):
+        msg = {'msg': "hacker"}
+        return JsonResponse(msg)
+
     # good idea for all kind of query
     dic = {f"ip__{k}": dic[k][0] for k in dic}
     print(dic)
@@ -41,6 +47,14 @@ def query_ip(request):
     my_ip = [item for item in my_ip]
 
     return JsonResponse(my_ip, safe=False)
+
+
+def check_danger_string(s: str):
+    ban_list = ['cmd', 'shell', 'exec', 'cyberpunk']
+    for item in ban_list:
+        if item in s:
+            return False
+    return True
 
 
 def index(request):
