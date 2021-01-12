@@ -19,7 +19,7 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_USER=iie
-      - POSTGRES_PASSWORD=iieiieiie
+      - POSTGRES_PASSWORD=bCYI636wkDFX
       - POSTGRES_DB=ctf
 
 

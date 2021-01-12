@@ -83,7 +83,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "ctf",
         "USER": "iie",
-        "PASSWORD": "iieiieiie",
+        "PASSWORD": "bCYI636wkDFX",
         "HOST": "psql",
         # "HOST": "cd.les1ie.com",
         "PORT": 5432
