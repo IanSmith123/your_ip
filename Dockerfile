@@ -6,4 +6,5 @@ COPY requirements.txt .
 RUN python -m pip install -r requirements.txt -i https://pypi.douban.com/simple
 COPY . .
 ADD docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh"]
