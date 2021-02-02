@@ -5,5 +5,6 @@
 docker-compose up
 ```
 
-[wp](wp.md)
+[wp](wp.pdf)
+
 2021年1月10日00:11:58
